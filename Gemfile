@@ -10,6 +10,7 @@ ruby '2.2.5'
 gem 'pg', '~> 0.18'
 gem 'rails', '~> 5.0.6'
 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'cancancan', '~> 1.10'
 gem 'carrierwave', '~> 1.1'
 gem 'coffee-rails', '~> 4.2'
@@ -30,12 +31,12 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
-  gem 'better_errors', '~> 2.3'
-  gem 'binding_of_caller', '~> 0.7.2'
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'better_errors', '~> 2.3'
+  gem 'binding_of_caller', '~> 0.7.2'
   gem 'listen', '~> 3.0.5'
   gem 'pry', '~> 0.10.4'
   gem 'pry-rails', '~> 0.3.6'
