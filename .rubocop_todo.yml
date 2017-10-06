@@ -1,0 +1,42 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'test/test_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/environments/development.rb'
+
+Metrics/LineLength:
+  Max: 130
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/ModuleLength:
+  Max: 200
+
+Style/GuardClause:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 34
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Rails:
+  Enabled: true
