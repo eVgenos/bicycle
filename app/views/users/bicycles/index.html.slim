@@ -1,0 +1,15 @@
+ol.breadcrumb
+  li
+    = link_to 'Profile', edit_user_registration_path
+  li.active My Bicycles
+
+h3 Here you can manage your bicycles
+hr
+p.lead
+  = link_to 'Add Bicycle', new_users_bicycle_path, class: 'btn btn-success btn-lg'
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+      .panel-body
+        = render 'users/bicycles/bicycles_table'

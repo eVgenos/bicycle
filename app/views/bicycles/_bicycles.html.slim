@@ -1,0 +1,9 @@
+.col-md-8
+  h1.page-header
+    | Page Heading
+    small Secondary Text
+  = render @bicycles
+  br
+  .text-center
+    = "No result" unless @bicycles.any?
+    = will_paginate @bicycles, renderer: BootstrapPagination::Rails

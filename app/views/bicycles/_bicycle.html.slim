@@ -1,0 +1,21 @@
+div id="#{ bicycle.id }"
+  .pull-right
+    = link_to 'Use', use_bicycle_path(bicycle), remote: true, method: :post, class: 'btn btn-danger' if current_user.present?
+  h2
+    = link_to bicycle.name, bicycle
+  p.lead
+    = "by #{ bicycle.user.email }"
+  p
+    span.glyphicon.glyphicon-time
+    = "Posted on #{bicycle.created_at.localtime.strftime("%B %d, %Y at %r")}"
+  hr
+  = image_tag bicycle.image.file_url.to_s, class: 'img-responsive' if bicycle.image
+  hr
+  p
+    = bicycle.description
+  = link_to bicycle, class: 'btn btn-primary' do
+    | Read More
+    span.glyphicon.glyphicon-chevron-right
+  hr
+
+
