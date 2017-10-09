@@ -1,3 +1,7 @@
+ol.breadcrumb
+  li
+    = link_to 'My Bicycles', users_bicycles_path
+  li.active Manage
 .col-md-4.col-md-offset-4
   = simple_form_for [:users, @bicycle] do |f|
     = f.error_notification
@@ -9,7 +13,7 @@
            class: 'btn btn-danger' if @bicycle.id
     .form-group
       .col-sm-12
-        = image_tag @bicycle.image.file_url.to_s if @bicycle.image
+        = image_tag @bicycle.image.file_url(:thumb).to_s if @bicycle.image
         = f.simple_fields_for :image, Image.new do |builder|
           = builder.input :file
         = f.association :category, include_blank: 'Select category'

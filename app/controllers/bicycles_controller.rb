@@ -3,10 +3,10 @@ class BicyclesController < ApplicationController
   before_action :set_categories, only: %i[index show]
 
   def index
-    bicycles = Bicycle.filter(params.slice(:category))
-               .search(params[:search])
-    @bicycles = bicycles.where.not(id: try(:current_user).try(:usages).try(:pluck, :bicycle_id)).order(created_at: :desc)
-                    .paginate(page: params[:page], per_page: 2)
+    @bicycles = Bicycle.filter(params.slice(:category, :search))
+                       .where.not(id: try(:current_user).try(:usages).try(:pluck, :bicycle_id))
+                       .order(created_at: :desc)
+                       .paginate(page: params[:page], per_page: 2)
   end
 
   def show; end
@@ -18,7 +18,6 @@ class BicyclesController < ApplicationController
       format.html { redirect_to root_path, notice: 'Success!' }
       format.js
     end
-
   end
 
   private

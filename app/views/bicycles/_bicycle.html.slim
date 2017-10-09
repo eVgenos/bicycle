@@ -12,7 +12,7 @@ div id="#{ bicycle.id }"
   = image_tag bicycle.image.file_url.to_s, class: 'img-responsive' if bicycle.image
   hr
   p
-    = bicycle.description
+    = truncate(bicycle.description.gsub(/\n/, '<br>').html_safe, length: 400)
   = link_to bicycle, class: 'btn btn-primary' do
     | Read More
     span.glyphicon.glyphicon-chevron-right

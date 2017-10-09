@@ -1,0 +1,13 @@
+.col-md-4.col-md-offset-4
+  = simple_form_for [@bicycle, @suggestion] do |f|
+    = f.error_notification
+
+    legend
+    .form-group
+      .col-sm-12
+        = f.input :name, input_html:{ value: @bicycle.name, class: 'form-control' }
+        = f.input :description,
+                input_html:{ value: @bicycle.description, style: 'height: 130px;resize: none;', class: 'form-control' }
+      .col-sm-offset-4.col-sm-10
+        .pull-center
+          = f.submit :Save, class: 'btn btn-primary'

@@ -1,0 +1,21 @@
+ol.breadcrumb
+  li
+    = link_to 'Suggestions', users_bicycle_suggestions_path
+  li.active
+    = @suggestion.name
+.col-md-4.col-md-offset-4
+  = simple_form_for [:users, @bicycle, @suggestion] do |f|
+    = f.error_notification
+
+    legend
+    .form-group
+      .col-sm-12
+        = f.input :name, input_html:{ class: 'form-control' }
+        = f.input :description,
+                input_html:{ style: 'height: 130px;resize: none;', class: 'form-control' }
+      .col-sm-offset-4.col-sm-10
+        .pull-center
+          = f.submit 'Merge', class: 'btn btn-primary'
+          = link_to 'Cancel', users_bicycle_suggestion_path(@bicycle, @suggestion),
+                            method: :delete, data: {confirm: 'Are you sure?'},
+                            class: 'btn btn-default'

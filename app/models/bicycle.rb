@@ -1,7 +1,7 @@
 class Bicycle < ApplicationRecord
   include Filterable
 
-  validates :name, :description, :category_id, presence: true
+  validates :name, :description, presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
   has_many :suggestions, dependent: :destroy
@@ -12,13 +12,8 @@ class Bicycle < ApplicationRecord
   accepts_nested_attributes_for :image, allow_destroy: true
 
   scope :category, ->(category_id) { where(category_id: category_id) }
-
-  def self.search(search)
-    if search
-      where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?)',
-            "%#{search}%", "%#{search}%")
-    else
-      all
-    end
-  end
+  scope :search, ->(search) {
+    where('LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?)',
+          "%#{search}%", "%#{search}%")
+  }
 end

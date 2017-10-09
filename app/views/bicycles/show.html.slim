@@ -13,6 +13,8 @@
   = image_tag @bicycle.image.file_url.to_s, class: 'img-responsive' if @bicycle.image
   hr
   p.lead
-    = @bicycle.description
+    = @bicycle.description.gsub(/\n/, '<br>').html_safe
   hr
+  .pull-right
+    = link_to 'Suggest', new_bicycle_suggestion_path(@bicycle), class: 'btn btn-default' if current_user && can_suggest?
 = render 'shared/sidebar'

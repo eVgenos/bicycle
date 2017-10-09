@@ -3,14 +3,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :bicycles do
+  resources :bicycles, only: %i[index show] do
     post :use, on: :member
 
-    resources :suggestions
+    resources :suggestions, only: %i[new create]
   end
 
   namespace :users do
-    resources :bicycles
-    resources :suggestions, except: %i[show update]
+    resources :bicycles, except: :show do
+      resources :suggestions, only: %i[index edit update destroy]
+    end
   end
 end

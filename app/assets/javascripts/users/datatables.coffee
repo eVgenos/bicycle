@@ -9,5 +9,6 @@ $(document).on 'turbolinks:load', ->
       { data: 'description' }
       { data: 'category' }
       { data: 'created_at' }
+      { data: 'suggestions' }
     ]
   return
